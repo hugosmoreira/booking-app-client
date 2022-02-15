@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import from react-redux and redux - create user reducer function - combine multiple reducers //
+// create redux store - provide redux store to entire app // 
 
 ReactDOM.render(
   <React.StrictMode>
