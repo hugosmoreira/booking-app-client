@@ -32,7 +32,7 @@ const Login = ({history}) => {
 
         dispatch({type: 'LOGGED_IN_USER', payload: res.data})
       }
-      history.push('/')
+      history.push('/dashboard')
     } catch (err) {
       console.log(err)
       if(err.response.status === 400) toast.error(err.response.data)
