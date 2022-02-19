@@ -13,8 +13,7 @@ const DashboardSeller = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
-      
-      
+     
     } catch (err) {
       console.log(err);
       toast.error("Stripe connect failed, Try again.");
