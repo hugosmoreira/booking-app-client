@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HomeOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
+import { createConnectAccount } from "../actions/stripe";
 
 const DashboardSeller = () => {
   const { auth } = useSelector((state) => ({ ...state }));
@@ -13,6 +14,9 @@ const DashboardSeller = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
+      let res = await createConnectAccount(auth.token);
+      console.log(res); // get login link
+      window.location.href = res.data;
      
     } catch (err) {
       console.log(err);
