@@ -4,8 +4,8 @@ import ConnectNav from "../components/ConnectNav";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HomeOutlined } from "@ant-design/icons";
-import { toast } from "react-toastify";
 import { createConnectAccount } from "../actions/stripe";
+import { toast } from "react-toastify";
 
 const DashboardSeller = () => {
   const { auth } = useSelector((state) => ({ ...state }));
@@ -17,7 +17,6 @@ const DashboardSeller = () => {
       let res = await createConnectAccount(auth.token);
       console.log(res); // get login link
       window.location.href = res.data;
-     
     } catch (err) {
       console.log(err);
       toast.error("Stripe connect failed, Try again.");
