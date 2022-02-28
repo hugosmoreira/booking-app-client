@@ -57,7 +57,7 @@ const HotelCreateForm = ({
           className="form-control m-2"
           placeholder="Location"
           defaultValue={location}
-          options={config}
+          
           onChange={({ suggestion }) => setLocation(suggestion.value)}
           style={{ height: "50px" }}
         />
