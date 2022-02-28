@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { DatePicker, Select } from "antd";
 import { read, updateHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
+import HotelEditForm from "../components/forms/HotelEditForm";
 
 const { Option } = Select;
 
@@ -80,7 +81,13 @@ const EditHotel = ({ match }) => {
         <div className="row">
           <div className="col-md-10">
             <br />
-            
+            <HotelEditForm
+              values={values}
+              setValues={setValues}
+              handleChange={handleChange}
+              handleImageChange={handleImageChange}
+              handleSubmit={handleSubmit}
+            />
           </div>
           <div className="col-md-2">
             <img
