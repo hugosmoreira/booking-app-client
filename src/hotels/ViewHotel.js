@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStore } from "react-redux";
 import { read, diffDays } from "../actions/hotel";
+import { getSessionId } from "../actions/stripe";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
@@ -23,7 +24,20 @@ const ViewHotel = ({ match, history }) => {
     setImage(`${process.env.REACT_APP_API}/hotel/image/${res.data._id}`);
   };
 
-  
+  const handleClick = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (!auth) history.push("/login");
+    // console.log(auth.token, match.params.hotelId);
+    let res = await getSessionId(auth.token, match.params.hotelId);
+    // console.log("get sessionid resposne", res.data.sessionId);
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_KEY);
+    stripe
+      .redirectToCheckout({
+        sessionId: res.data.sessionId,
+      })
+      .then((result) => console.log(result));
+  };
 
   return (
     <>
@@ -58,7 +72,7 @@ const ViewHotel = ({ match, history }) => {
             <i>Posted by {hotel.postedBy && hotel.postedBy.name}</i>
             <br />
             <button
-              
+              onClick={handleClick}
               className="btn btn-block btn-lg btn-primary mt-3"
               disabled={loading}
             >
