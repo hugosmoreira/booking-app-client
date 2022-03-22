@@ -9,12 +9,7 @@ import { useHistory } from "react-router-dom";
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
-const config = {
-  appId: process.env.REACT_APP_ALGOLIA_APP_ID,
-  apiKey: process.env.REACT_APP_ALGOLIA_API_KEY,
-  language: "en",
-  // countries: ["au"],
-};
+
 
 const Search = () => {
   // state
@@ -34,7 +29,7 @@ const Search = () => {
         <AlgoliaPlaces
           placeholder="Location"
           defaultValue={location}
-          options={config}
+          
           onChange={({ suggestion }) => setLocation(suggestion.value)}
           style={{ height: "50px" }}
         />
